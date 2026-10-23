@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+   <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Payment</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active">Orders</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="container w-50 p-5 mt-5 mb-4 border border-1 shadow bg-secondary">
+    <h1 class="text-center fw-bold fs-2 text-light">Your Orders</h1>
+    {% for i in oders %}
+    {% for j in i.products.all %}
+    <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{j.product.image.url}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2 class="card-title">{{j.product.name}}</h2>
+        <h3>Quatinty:{{j.quantity}}</h3>
+          <h3>Ordered_date:{{i.ordered_date}}</h3>
+          <h3>Delivery_status:{{i.delivery_status}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+    {% endfor %}
+
+</div>
+{% endblock %}
